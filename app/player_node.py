@@ -1,5 +1,6 @@
 from player import Player
 
+
 class PlayerNode:
     def __init__(self, player: Player) -> None:
         self.__player = player
