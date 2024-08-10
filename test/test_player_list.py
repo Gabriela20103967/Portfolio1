@@ -18,7 +18,7 @@ class TestPlayerList(unittest.TestCase):
         player = Player("1", "Gabriela")
         self.pl.insert_first(player)
         self.assertFalse(self.pl.is_empty())
-        head_node = self.pl._PlayerList__head
+        head_node = self.pl.head
         self.assertEqual(head_node.player.uid, "1")
         self.assertEqual(head_node.player.name, "Gabriela")
 
