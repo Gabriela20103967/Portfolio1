@@ -56,13 +56,32 @@ class PlayerList:
             self.__tail = self.__tail.prev
             self.__tail.next = None
 
+    def delete_by_key_item(self, id: str):
+        current = self.__head
+
+        while current is not None:
+            if current.player.uid == id:
+                if current == self.__head:
+                    self.delete_head_item()
+                    return
+
+                elif current == self.__tail:
+                    self.delete_tail_item()
+                    return
+
+                else:
+                    current.prev.next = current.next
+                    current.next.prev = current.prev
+
+            current = current.next
+
 
     def __str__(self):
         node = []
         current = self.__head
         while current is not None:
-            node.append(str(current))
+            node.append(str(current.player.name))
             current = current.next
-        return "->".join(node)
+        return f"{', '.join(node)}"
 
 

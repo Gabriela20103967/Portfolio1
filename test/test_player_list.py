@@ -37,6 +37,13 @@ class TestPlayerList(unittest.TestCase):
         self.playerlist.delete_tail_item()
         self.assertEqual(self.playerlist.tail.player, self.player)
 
+    def test_delete_by_key(self):
+        self.playerlist.insert_first(self.player)
+        self.playerlist.insert_last(self.player2)
+        self.playerlist.insert_last(self.player3)
+        self.playerlist.delete_by_key_item("2")
+        self.assertEqual(str(self.playerlist),  "Gabriela, Maria")
+
 
 if __name__ == '__main__':
     unittest.main()
