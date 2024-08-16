@@ -40,6 +40,23 @@ class PlayerList:
             self.__tail.next = new_node
             self.__tail = new_node
 
+    def delete_head_item(self):
+        if self.__head == self.__tail:
+            self.__head = None
+            self.__tail = None
+        else:
+            self.__head = self.__head.next
+            self.__head.prev = None
+
+    def delete_tail_item(self):
+        if self.__head == self.__tail:
+            self.__head = None
+            self.__tail = None
+        else:
+            self.__tail = self.__tail.prev
+            self.__tail.next = None
+
+
     def __str__(self):
         node = []
         current = self.__head
@@ -49,15 +66,3 @@ class PlayerList:
         return "->".join(node)
 
 
-def main():
-    player1 = Player("1", "Gabriela")
-    player2 = Player("2", "Tanmay")
-    pl1 = PlayerList()
-    pl1.insert_first(player1)
-    pl1.insert_last(player2)
-    print("Player List:")
-    print(pl1)
-
-
-if __name__ == "__main__":
-    main()

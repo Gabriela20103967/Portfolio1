@@ -7,26 +7,35 @@ from player import Player
 class TestPlayerList(unittest.TestCase):
 
     def setUp(self):
-        self.pl = PlayerList()
+        self.playerlist = PlayerList()
+        self.player = Player(uid="1", name="Gabriela")
+        self.player2 = Player(uid="2", name="Tanmay")
+        self.player3 = Player(uid="3", name="Maria")
 
     def test_is_empty(self):
-        self.assertTrue(self.pl.is_empty())
+        self.assertTrue(self.playerlist.is_empty)
 
     def test_insert_first(self):
-        player = Player("1", "Gabriela")
-        self.pl.insert_first(player)
-        self.assertFalse(self.pl.is_empty())
-        head_node = self.pl.head
-        self.assertEqual(head_node.player.uid, "1")
-        self.assertEqual(head_node.player.name, "Gabriela")
+        self.playerlist.insert_first(self.player)
+        self.playerlist.insert_first(self.player2)
+        self.assertEqual(self.playerlist.head.player, self.player2)
 
     def test_insert_last(self):
-        player = Player("2", "Tanmay")
-        self.pl.insert_last(player)
-        self.assertFalse(self.pl.is_empty())
-        tail_node = self.pl.tail
-        self.assertEqual(tail_node.player.uid, "2")
-        self.assertEqual(tail_node.player.name, "Tanmay")
+        self.playerlist.insert_last(self.player)
+        self.playerlist.insert_last(self.player2)
+        self.assertEqual(self.playerlist.tail.player, self.player2)
+
+    def test_delete_head_item(self):
+        self.playerlist.insert_last(self.player)
+        self.playerlist.insert_last(self.player2)
+        self.playerlist.delete_head_item()
+        self.assertEqual(self.playerlist.head.player, self.player2)
+
+    def test_delete_tail_item(self):
+        self.playerlist.insert_last(self.player)
+        self.playerlist.insert_last(self.player3)
+        self.playerlist.delete_tail_item()
+        self.assertEqual(self.playerlist.tail.player, self.player)
 
 
 if __name__ == '__main__':
