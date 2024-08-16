@@ -29,7 +29,7 @@ class PlayerList:
             self.__head.prev = new_node
             self.__head = new_node
 
-    def insert_last(self, player:Player):
+    def insert_last(self, player: Player):
         new_node = PlayerNode(player)
 
         if self.is_empty():
@@ -75,6 +75,18 @@ class PlayerList:
 
             current = current.next
 
+    def display(self, forward=True):
+        if forward:
+            current = self.__head
+            while current is not None:
+                print(current.player.name)
+                current = current.next
+        else:
+            current = self.__tail
+            while current is not None:
+                print(current.player.name)
+                current = current.prev
+        print()
 
     def __str__(self):
         node = []
@@ -83,5 +95,3 @@ class PlayerList:
             node.append(str(current.player.name))
             current = current.next
         return f"{', '.join(node)}"
-
-
