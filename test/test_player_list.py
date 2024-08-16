@@ -1,7 +1,5 @@
 import unittest
 
-import player as player
-
 from player_list import PlayerList
 from player import Player
 

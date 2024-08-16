@@ -1,5 +1,5 @@
 class Player:
-    def __init__(self, uid: str, name:str) -> None:
+    def __init__(self, uid: str, name: str) -> None:
         self.__uid = uid
         self.__name = name
 
@@ -13,4 +13,3 @@ class Player:
 
     def __str__(self):
         return f"Player(uid={self.__uid}, name={self.__name})"
-

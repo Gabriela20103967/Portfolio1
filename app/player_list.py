@@ -28,3 +28,23 @@ class PlayerList:
             new_node.next = self.__head
             self.__head.prev = new_node
             self.__head = new_node
+
+    def __str__(self):
+        node = []
+        current = self.__head
+        while current is not None:
+            node.append(str(current))
+            current = current.next
+            return "->".join(node)
+
+def main():
+    player = Player("1", "Gabriela")
+    pl1 = PlayerList()
+    pl1.insert_first(player)
+    print("Player List:")
+    print(pl1)
+
+
+if __name__ == "__main__":
+    main()
+
