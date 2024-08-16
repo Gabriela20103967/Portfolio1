@@ -29,22 +29,35 @@ class PlayerList:
             self.__head.prev = new_node
             self.__head = new_node
 
+    def insert_last(self, player:Player):
+        new_node = PlayerNode(player)
+
+        if self.is_empty():
+            self.__head = new_node
+            self.__tail = new_node
+        else:
+            new_node.prev = self.__tail
+            self.__tail.next = new_node
+            self.__tail = new_node
+
     def __str__(self):
         node = []
         current = self.__head
         while current is not None:
             node.append(str(current))
             current = current.next
-            return "->".join(node)
+        return "->".join(node)
+
 
 def main():
-    player = Player("1", "Gabriela")
+    player1 = Player("1", "Gabriela")
+    player2 = Player("2", "Tanmay")
     pl1 = PlayerList()
-    pl1.insert_first(player)
+    pl1.insert_first(player1)
+    pl1.insert_last(player2)
     print("Player List:")
     print(pl1)
 
 
 if __name__ == "__main__":
     main()
-

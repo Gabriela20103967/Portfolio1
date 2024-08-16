@@ -27,21 +27,20 @@ class PlayerNode:
     def prev(self, prev_node: Player):
         self.__prev = prev_node
 
-
     @property
     def key(self):
         return self.__player.uid
 
     def __str__(self):
-        return f"PlayerNode(player={self.__player}, previous={self.__prev}, next={self.__next})"
-
+        prev_id = self.__prev.player.uid if self.__prev else "None"
+        next_id = self.__next.player.uid if self.__next else "None"
+        return f"PlayerNode(player={self.__player}, previous={prev_id}, next={next_id})"
 
 def main():
     player = Player("1", "Gabriela")
     plnode = PlayerNode(player)
     print(str(player))
     print(str(plnode))
-
 
 if __name__ == "__main__":
     main()
