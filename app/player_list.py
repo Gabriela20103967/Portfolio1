@@ -152,12 +152,15 @@ class PlayerList:
         :return:
         str: A string that listing all the players in the list.
         """
+
         node = []
         current = self.__head
         while current is not None:
-            node.append(str(current.player.name))
+            prev_uid = current.prev.player.uid if current.prev else "None"
+            next_uid = current.next.player.uid if current.next else "None"
+            node.append(f"Prev: {prev_uid}, UID: {current.player.uid}, Name: {current.player.name}, Next: {next_uid}")
             current = current.next
-        return f"{', '.join(node)}"
+        return f"{' -> '.join(node)}"
 
 
 def main():
@@ -178,6 +181,9 @@ def main():
     print("Deleting Player")
     player_list.delete_by_key_item("02")
     player_list.display(forward=True)
+
+    print("The double linked list")
+    print(player_list)
 
 
 if __name__ == "__main__":
