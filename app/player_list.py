@@ -136,12 +136,12 @@ class PlayerList:
         if forward:
             current = self.__head
             while current is not None:
-                print(current.player.name)
+                print(f"UID: {current.player.uid}, Name: {current.player.name}")
                 current = current.next
         else:
             current = self.__tail
             while current is not None:
-                print(current.player.name)
+                print(f"UID: {current.player.uid}, Name: {current.player.name}")
                 current = current.prev
         print()
 
@@ -159,3 +159,26 @@ class PlayerList:
             current = current.next
         return f"{', '.join(node)}"
 
+
+def main():
+    player1 = Player(uid="01", name="Gabriela")
+    player2 = Player(uid="02", name="Tanmay")
+    player3 = Player(uid="03", name="Maria")
+    player_list = PlayerList()
+    player_list.insert_first(player1)
+    player_list.insert_last(player2)
+    player_list.insert_last(player3)
+
+    print("Player from head to tail:")
+    player_list.display(forward=True)
+
+    print("Player from tail to head:")
+    player_list.display(forward=False)
+
+    print("Deleting Player")
+    player_list.delete_by_key_item("02")
+    player_list.display(forward=True)
+
+
+if __name__ == "__main__":
+    main()
