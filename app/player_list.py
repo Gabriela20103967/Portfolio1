@@ -110,7 +110,7 @@ class PlayerList:
         current = self.__head
 
         while current is not None:
-            if current.player.uid == id:
+            if current.key == id:
                 if current == self.__head:
                     self.delete_head_item()
                     return
@@ -158,3 +158,4 @@ class PlayerList:
             node.append(str(current.player.name))
             current = current.next
         return f"{', '.join(node)}"
+
