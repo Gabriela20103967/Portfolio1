@@ -33,3 +33,15 @@ class TestPlayer(unittest.TestCase):
         Test the str method of the player for correct representation.
         """
         self.assertEqual(str(self.player), "Player(uid=1, name=Gabriela)")
+
+    def test_add_verify_password(self):
+        self.player.add_password("password12")
+        self.assertTrue(self.player.verify_password("password12"))
+
+    def test_add_verify_wrong_password(self):
+        self.player.add_password("password34")
+        self.assertFalse(self.player.verify_password("password3"))
+
+
+if __name__ == '__main__':
+    unittest.main()
