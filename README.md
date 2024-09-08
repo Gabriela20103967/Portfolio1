@@ -32,27 +32,17 @@
 3. Provide a stepwise description of how can you store a password safely using a hashing technique and how
    you can verify that some string is the right password?
 
-  - A) first of all we need the input from the user, after that we need a method to storage the password in this case
-       I'm gonna use the salt method, so we need to create a random string with characters, so the input can be
-       'password123' and the random string 'Kj7@ImwY0n8', after this we need to combine both passwords, so the salt
-       method gonna convert the combine the two password into a fixed-length string, follow we need a hash function for
-       which in can be Argon2 or other cryptographic hash function, so this can generate something
-       like 'aDf89dFcv23', after having this we need to store the salt password because if is not store we can't 
-       verificate. So after doing this the random string which is the salt and the new generate password which is the
-       hashed password gonna be together in the user's record.
-  - B) When the user provide the password which is the 'password123', we retrieve the salt password with the password to
-       get the has password, we use the dame hash function to join the salt and the user password and have to produce
-       the same hash password, after that we compare the hash password with the one that we have stored
-       to verificate if they match or not, to give the correspond permission to access.
+  - A) First we need to create a unique, random salt for each password, after that we need to combine the password and
+       the salt, use a secure hashing algorithm to hash the combined password and salt, and save the hash and the salt
+       in the database.
+  - B) To verify the right password we need first get the user's stored salt, combine the input password with the stored
+       salt, to hash the combined input password and salt and compare the new hash with the stored hash. So if they
+       match
 
 4. What is the purpose of a "salt" when hashing a password? what are the two most important properties of a "salt"?
 
-  - The purpose of salt when we want to hashing a password is to enhance the security of it, so for example if two
-    different users have the same password the salt method will create a different hash password for the two users.
-    And the two most important properties I think are the uniqueness and randomness, because of this
-    method going to generate a unique password every time, so we are never going to have the same password and the
-    randomness because using a random number is going to give us an unpredictable result every time, make more difficult
-   to hackers to access or try to guess the salt.
+  - The purpose of "salt" when hashing a password is to ensure the security and uniqueness for identical passwords. And 
+    the two most important properties are randomness and uniqueness.
 
 # References:
 
