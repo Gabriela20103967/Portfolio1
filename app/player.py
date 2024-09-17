@@ -40,6 +40,17 @@ class Player:
         """
         return self.__name
 
+    def add_password(self, password: str):
+        ph = PasswordHasher()
+        self.__hashed_password = ph.hash(password)
+
+    def verify_password(self, password: str):
+        ph = PasswordHasher()
+        try:
+            return ph.verify(self.__hashed_password, password)
+        except:
+            return False
+
     def __str__(self):
         """
         Return a string representation of the player.
@@ -48,7 +59,5 @@ class Player:
         str: a string that describe the player
         """
         return f"Player(uid={self.__uid}, name={self.__name})"
-    
-    def add_password(self, password: str):
-        ph = PasswordHasher()
-        self.__hashed_password = ph.hash(password)
+
+
