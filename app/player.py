@@ -1,3 +1,6 @@
+from argon2 import PasswordHasher
+
+
 class Player:
     """
     A class which represent a player
@@ -45,3 +48,7 @@ class Player:
         str: a string that describe the player
         """
         return f"Player(uid={self.__uid}, name={self.__name})"
+    
+    def add_password(self, password: str):
+        ph = PasswordHasher()
+        self.__hashed_password = ph.hash(password)
