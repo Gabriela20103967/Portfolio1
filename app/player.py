@@ -41,10 +41,26 @@ class Player:
         return self.__name
 
     def add_password(self, password: str):
+        """
+        Hashes and store the player's password.
+
+        Args:
+            password (str): The password to be hashed and store.
+        """
         ph = PasswordHasher()
         self.__hashed_password = ph.hash(password)
 
     def verify_password(self, password: str):
+        """
+        Verify the provide password against the stored hashed password.
+
+        Args:
+            password (str): The password to verify
+
+        :return:
+        bool: True if the password match with the store hash, and false otherwise.
+
+        """
         ph = PasswordHasher()
         try:
             return ph.verify(self.__hashed_password, password)

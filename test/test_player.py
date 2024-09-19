@@ -35,10 +35,16 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(str(self.player), "Player(uid=1, name=Gabriela)")
 
     def test_add_verify_password(self):
+        """
+        Test that adding and verifying the correct password works.
+        """
         self.player.add_password("password1")
         self.assertTrue(self.player.verify_password("password1"))
 
     def test_add_verify_wrong_password(self):
+        """
+        Test that verifying an incorrect password fails.
+        """
         self.player.add_password("password2")
         self.assertFalse(self.player.verify_password("password3"))
 
