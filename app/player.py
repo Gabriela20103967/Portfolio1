@@ -1,6 +1,5 @@
 from argon2 import PasswordHasher
 
-
 class Player:
     """
     A class which represent a player
@@ -60,7 +59,11 @@ class Player:
 
         Args:
             new_score (int): Set the new score for the player.
+        Raises:
+            ValueError: if the new score is negative
         """
+        if new_score < 0:
+            raise ValueError("Score must be a positive number")
         self.__score = new_score
 
     def add_password(self, password: str):
@@ -124,21 +127,21 @@ class Player:
         return self.__score < other.score
 
     @staticmethod
-    def sort_descending(scores: list):
+    def sort_descending(players: list):
         """
         Sort a list of the players scores in descending order using bubble sort algorithm.
 
         Args:
-            scores (list): A list of player scores to be sorted.
+            players (list): A list of player instances to be sorted.
         :return:
-        list: A list of scores sorted in descending order.
+        list: A list of player sorted in descending order by score.
         """
-        n = len(scores)
+        n = len(players)
         for i in range(n):
             for j in range(0, n-i-1):
-                if scores[j] < scores[j+1]:
-                    scores[j], scores[j+1] = scores[j+1], scores[j]
-        return scores
+                if players[j].score < players[j+1].score:
+                    players[j], players[j+1] = players[j+1], players[j]
+        return players
 
     def __str__(self):
         """
@@ -151,14 +154,28 @@ class Player:
 
 
 def main():
-    scores = [90, 20, 15, 36]
-    print(f"Unsorted list: {scores}")
+    player1 = Player(uid="1", name="Gabriela", score=10)
+    player2 = Player(uid="2", name="Tanmay", score=20)
+    player3 = Player(uid="3", name="John", score=15)
+    player4 = Player(uid="4", name="Luke", score=36)
 
-    sorted_scores = Player.sort_descending(scores)
-    print(f"Sorted list: {sorted_scores}")
+    print("Player:")
+    print(str(player1))
+    print(str(player2))
+    print(str(player3))
+    print(str(player4))
+
+    players = [player1, player2, player3, player4]
+    print(f"Unsorted list :")
+    for player in players:
+        print(player)
+
+    sorted_list = Player.sort_descending(players)
+    print(f"Sorted list :")
+    for player in sorted_list:
+        print(player)
 
 
 if __name__ == "__main__":
     main()
-
 

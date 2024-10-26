@@ -125,6 +125,15 @@ class PlayerList:
 
             current = current.next
 
+    def to_list(self):
+        """ Converts the linked list of players into a Python list."""
+        players = []
+        current = self.__head
+        while current:
+            players.append(current.player)
+            current = current.next
+        return players
+
     def display(self, forward=True):
         """
         Display the players in the list.

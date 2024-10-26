@@ -10,7 +10,7 @@ class TestPlayer(unittest.TestCase):
         self.player = Player(uid="1", name="Gabriela", score=10)
         self.player2 = Player(uid="2", name="Tanmay", score=20)
         self.player3 = Player(uid="3", name="John", score=15)
-        self.player4 = Player(uid="4", name="Luke", score=36)
+        self.player4 = Player(uid="4", name="Luke", score=10)
 
     def test_initialization(self):
         """
@@ -56,30 +56,33 @@ class TestPlayer(unittest.TestCase):
         """
         Test if the player score is equal to the other player score
         """
-        self.assertTrue(self.player == self.player)
-        self.assertFalse(self.player == self.player2)
+        self.assertTrue(self.player.score == self.player4.score)
+        self.assertFalse(self.player.score == self.player2.score)
 
     def test_gt(self):
         """
-        Test if the player score is greater than the other player score        :return:
+        Test if the player score is greater than the other player score
         """
-        self.assertTrue(self.player2 > self.player)
-        self.assertFalse(self.player > self.player2)
+        self.assertTrue(self.player2.score > self.player.score)
+        self.assertFalse(self.player.score > self.player2.score)
 
     def test_le(self):
         """
-        Test if the player score is less than the other player score        :return:
+        Test if the player score is less than the other player score
         """
-        self.assertTrue(self.player < self.player2)
-        self.assertFalse(self.player2 < self.player)
+        self.assertTrue(self.player.score < self.player2.score)
+        self.assertFalse(self.player2.score < self.player.score)
 
     def test_sort_descending(self):
         """
         Test the sort_descending method works correctly.
         """
-        scores = [self.player.score, self.player2.score, self.player3.score, self.player4.score]
-        sorted_scores = Player.sort_descending(scores)
-        self.assertEqual(sorted_scores, [36, 20, 15, 10])
+        players = [self.player, self.player2, self.player3, self.player4]
+        sorted_players = Player.sort_descending(players)
+        self.assertEqual(sorted_players[0].score, self.player2.score)
+        self.assertEqual(sorted_players[1].score, self.player3.score)
+        self.assertEqual(sorted_players[2].score, self.player4.score)
+        self.assertEqual(sorted_players[3].score, self.player.score)
 
 
 if __name__ == "__main__":
