@@ -25,6 +25,26 @@ class TestPlayerBST(unittest.TestCase):
         self.assertEqual(self.bst.root.right.player.name, "John")
         self.assertEqual(self.bst.root.left.right.player.name, "Luke")
 
+    def test_search_not_found(self):
+        self.bst.insert(self.player)
+        self.bst.insert(self.player2)
+        self.bst.insert(self.player3)
+        self.bst.insert(self.player4)
+
+        no_player = self.bst.search("Maria")
+        self.assertIsNone(no_player)
+
+    def test_search_found(self):
+        self.bst.insert(self.player)
+        self.bst.insert(self.player2)
+        self.bst.insert(self.player3)
+        self.bst.insert(self.player4)
+
+        found_player = self.bst.search("Gabriela")
+        self.assertIsNotNone(found_player)
+        self.assertEqual(found_player.name, "Gabriela")
+
+
 
 if __name__ == '__main__':
     unittest.main()

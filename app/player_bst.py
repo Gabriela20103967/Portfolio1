@@ -31,6 +31,23 @@ class PlayerBST:
                         parent.right = new_node
                         return
 
+    def search(self, name):
+        return self.prepare_search(self._root, name)
+
+    def prepare_search(self, current, name):
+        while current.player.name != name:
+            if name < current.player.name:
+                current = current.left
+            elif name > current.player.name:
+                current = current.right
+
+            if current is None:
+                print(f"{name} is not found!!")
+                return None
+
+        print(f"{name} is found!")
+        return current.player
+
 def main():
     tree = PlayerBST()
 
@@ -43,6 +60,9 @@ def main():
     tree.insert(player2)
     tree.insert(player3)
     tree.insert(player4)
+
+    tree.search("Gabriela")
+    tree.search("Maria")
 
 if __name__ == '__main__':
     main()
