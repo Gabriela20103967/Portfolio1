@@ -26,6 +26,10 @@ class TestPlayerBST(unittest.TestCase):
         self.assertEqual(self.bst.root.left.right.player.name, "Luke")
 
     def test_search_not_found(self):
+        """
+        Tests the search function for a player name that does not exist in the BST.
+        :return:
+        """
         self.bst.insert(self.player)
         self.bst.insert(self.player2)
         self.bst.insert(self.player3)
@@ -35,6 +39,10 @@ class TestPlayerBST(unittest.TestCase):
         self.assertIsNone(no_player)
 
     def test_search_found(self):
+        """
+        Tests the search function for a player name that exists in the BST.
+        :return:
+        """
         self.bst.insert(self.player)
         self.bst.insert(self.player2)
         self.bst.insert(self.player3)

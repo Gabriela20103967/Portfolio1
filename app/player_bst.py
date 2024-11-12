@@ -2,14 +2,27 @@ from player import Player
 from player_bnode import PlayerBNode
 
 class PlayerBST:
+    """
+    This class implement a Binary search Tree to store and manage each node in the
+    """
     def __init__(self):
+        """
+        Initialize an empty BST with no root node
+        """
         self._root = None
 
     @property
     def root(self):
+        """Returns the root node of the tree."""
         return self._root
 
     def insert(self, player: Player):
+        """
+        Adds a new player node to the BST based on the player's name.
+
+        Args:
+            player (Player): The Player object to add.
+        """
         new_node = PlayerBNode(player)
         new_node.key = player.name
         new_node.value = player
@@ -33,9 +46,27 @@ class PlayerBST:
                         return
 
     def search(self, name):
+        """
+        Searches for a player by name in the BST.
+
+        Args:
+            name (str): The name of the player to find.
+
+        Returns:
+            Player: The player object is found, or None if not found.
+        """
         return self.prepare_search(self._root, name)
 
     def prepare_search(self, current, name):
+        """
+        Helps to the search method to navigate through the BST to find a player by name.
+
+        Args:
+            current (PlayerBNode): The node to start searching from.
+            name (str): The name of the player to find.
+        Returns:
+            Player: The player object if found, or None if not found.
+        """
         while current.player.name != name:
             if name < current.player.name:
                 current = current.left
@@ -50,12 +81,26 @@ class PlayerBST:
         return current.player
 
     def traverse(self):
+        """
+        Performs an in-order traversal of the BST, returning all nodes in sorted order.
+
+        Returns:
+            list: A list of PlayerBNode objects sorted by player name.
+        """
         nodes = []
         print("In-order traversal: ")
         self.in_order_helper(self._root, nodes)
         return nodes
 
     def in_order_helper(self, node, nodes):
+        """
+        Recursively visits each node in-order (left, root, right) and collects them in a list.
+
+        Args:
+            node(PlayerBNode): The current node being visited.
+            nodes(list): The list to collect nodes in sorted order.
+
+        """
         if node is not None:
             self.in_order_helper(node.left, nodes)
             nodes.append(node)
@@ -63,6 +108,17 @@ class PlayerBST:
             self.in_order_helper(node.right, nodes)
 
     def balanced_tree(self, nodes, start, end):
+        """
+        Builds a balanced BST from a sorted list of nodes.
+
+        Args:
+            nodes(list): The sorted list of PlayerBNode objects.
+            start(int): The starting index of the list.
+            end(int): The ending index of the list.
+
+        Returns:
+            PlayerBNode: The root of the balanced BST
+        """
         if start > end:
             return None
         mid = (start + end) // 2
@@ -72,6 +128,12 @@ class PlayerBST:
         return self._root
 
     def balance_bst(self):
+        """
+        Balances the current BST to improve search efficiency.
+
+        Returns:
+            PlayerBNode: The new root of the balanced BST.
+        """
         nodes = []
         self.in_order_helper(self._root, nodes)
         return self.balanced_tree(nodes, 0, len(nodes) -1)
@@ -101,7 +163,7 @@ def main():
     print("\n")
     print("This is balanced tree: ")
     tree.balance_bst()
-    
+
 
 if __name__ == '__main__':
     main()
