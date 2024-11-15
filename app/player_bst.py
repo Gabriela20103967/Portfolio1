@@ -34,6 +34,10 @@ class PlayerBST:
             current_node = self._root
             while True:
                 parent = current_node
+                if player.name == current_node.player.name:
+                    print(f"Duplicate name: {player.name}")
+                    return
+
                 if player.name < current_node.player.name:
                     current_node = current_node.left
                     if current_node is None:

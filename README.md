@@ -17,13 +17,14 @@ Repeat this process at each node until the target is found or a leaf node is rea
 tree.
 
 3. In your own words, describe what a Balanced BST is?
-- A Balance Binary Tree is one in which the height difference between the left and right subtree of each node is less
-than one. So with this height measures ensures that the operations like insertion, deletion and searching remain efficient. 
+- A Balance Binary Tree is a binary search tree where the height difference between left and right subtree of a node 
+is at most 1, this keep the relatively balanced, making operations like searching, insert, and delete.
 
 8. With the newly balanced BST, how many steps does it take at most to find an existing item in the search tree?  
 - In a balanced Binary Searched Tree, the maximum number of steps to find an existing item is proportional to the tree's
 height. The height of balanced BST with n nodes is approximately log2(n). 
 
 # References 
+“Balanced Binary Tree.” GeeksforGeeks, 21 Dec. 2022, www.geeksforgeeks.org/balanced-binary-tree/.
 
 

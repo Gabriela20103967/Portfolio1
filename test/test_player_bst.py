@@ -21,9 +21,9 @@ class TestPlayerBST(unittest.TestCase):
         self.bst.insert(self.player4)
 
         self.assertEqual(self.bst.root.player.name, "Gabriela")
-        self.assertEqual(self.bst.root.left.player.name, "Tanmay")
-        self.assertEqual(self.bst.root.right.player.name, "John")
-        self.assertEqual(self.bst.root.left.right.player.name, "Luke")
+        self.assertEqual(self.bst.root.right.player.name, "Tanmay")
+        self.assertEqual(self.bst.root.right.left.player.name, "John")
+        self.assertEqual(self.bst.root.right.left.right.player.name, "Luke")
 
     def test_search_not_found(self):
         """
